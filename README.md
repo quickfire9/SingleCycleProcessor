@@ -9,9 +9,9 @@ This project implements a modular single-cycle ARMv8 processor using Verilog HDL
 - Next PC Logic
 
 ### In Progress
-- 🔧 Control Unit
-- 🔧 Top-level processor integration
-- 🔧 Support for full instruction set: LDUR, STUR, ADD, SUB, AND, ORR, CBZ, B
+- Control Unit
+- Top-level processor integration
+- Support for full instruction set: LDUR, STUR, ADD, SUB, AND, ORR, CBZ, B
 
 ### Tools Used
 - Verilog, iVerilog, GTKWave
