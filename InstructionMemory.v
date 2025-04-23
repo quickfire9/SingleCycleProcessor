@@ -66,7 +66,7 @@ module InstructionMemory(Data, Address);
 	 * Program loads constants from the data memory. Uses these constants to test
 	 * the following instructions: LDUR, ORR, AND, CBZ, ADD, SUB, STUR and B, and now MOVZ.
 	 * 
-	 * This test loads the imediate hex value "4a" into 
+	 * 
 	 *
 	 *
 	 *
