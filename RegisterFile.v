@@ -13,7 +13,7 @@ module RegisterFile(BusA, BusB, BusW, RA, RB, RW, RegWr, Clk);
     // always @(*) begin
     // 	// 2 delay read
     // 	#2 BusA = (RA == 5'd31) ? 64'd0 : registers[RA];
-    //     BusB = (RB == 5'd31) ? 64'd0 : registers[RB]; //only 1 delay insidfe always block, or second is delayed by 4 ticks instead of 2. do not use a second #2 in front of this line
+    //     BusB = (RB == 5'd31) ? 64'd0 : registers[RB]; //only 1 delay insidfe always block, or second is delayed by 4 ticks instead of 2
 	// end
 
     //both the always block and the continous assignment work 

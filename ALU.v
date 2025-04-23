@@ -10,7 +10,7 @@ module ALU(BusW, BusA, BusB, ALUCtrl, Zero);
     output  [63:0] BusW;
     input   [63:0] BusA, BusB;
     input   [3:0] ALUCtrl;
-    output  Zero;
+    output  wire Zero; //changed to wire
     
     reg     [63:0] BusW;
     
@@ -31,8 +31,11 @@ module ALU(BusW, BusA, BusB, ALUCtrl, Zero);
             `PassB: begin
                 BusW = BusB;
             end
+            default: begin
+                BusW = 64'b0;
+            end
         endcase
     end
 
-    assign Zero = (BusW == 0);
+    assign Zero = (BusW == 64'b0); //chganged from == 0 to  == 64'b0
 endmodule

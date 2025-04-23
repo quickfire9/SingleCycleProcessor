@@ -1,0 +1,54 @@
+LDUR X9, [XZR, 0x0]    //Load 1 into x9
+LDUR X10, [XZR, 0x8]   //Load a into x10
+LDUR X11, [XZR, 0x10]  //Load 5 into x11
+LDUR X12, [XZR, 0x18]  //Load big constant into x12
+LDUR X13, [XZR, 0x20]  //load a 0 into X13
+ORR X10, X10, X11  //Create mask of 0xf
+AND X12, X12, X10  //Mask off low order bits of big constant
+loop: CBZ X12, end  //while X12 is not 0
+ADD X13, X13, X9(rn)  //Increment counter in X13
+SUB X12, X12, X9  //Decrement remainder of big constant in X12
+B loop  //Repeat till X12 is 0
+STUR X13, [XZR, 0x20]  //store back the counter value into the memory location 0x20
+
+
+//Additional movez test
+
+34: MOVZ X9, 0xdef0, LSL #0 //
+//110100101_00_1101111011110000_01001
+//D29BDE09
+
+38: MOVZ X10, 0x9abc, LSL #16
+//110100101_01_1001101010111100_01010
+//D2B3578A
+
+42: ADD X10, X9, X10
+//10001011000_01010_000000_01001_01010
+//8B0A012A
+
+MOVZ X11, 0x5678, LSL #32
+//110100101_10_0101011001111000_01011
+//D2CACF0B
+
+MOVZ X12, 0x1234, LSL #48
+//110100101_11_0001001000110100_01100
+//D2E2468C
+
+ADD X12, X11, X12
+//10001011000_01100_000000_01011_01100
+//8B0C016C
+
+ADD X9, X10, X12
+//10001011000_01100_000000_01010_01001
+//8B0C0149
+
+
+STUR X9, [XZR, 0x28]
+//11111000000_000101000_00_11111_01001
+//F80283E9
+
+LDUR X10, [XZR, 0x28]
+//11111000010_000101000_00_11111_01010
+//F84283EA
+
+
